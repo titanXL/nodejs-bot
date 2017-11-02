@@ -1,0 +1,5 @@
+xoxb-266163803554-4Cj5q4qhFegF7F05knLwwLfZ
+
+curl \
+ -H 'Authorization: Bearer XPNMUVV25NCUXINRL3LIAAS5PGWTVAQG' \
+ 'https://api.wit.ai/message?v=02.11.2017 г.&q='
