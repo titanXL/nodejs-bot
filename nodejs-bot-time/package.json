@@ -1,0 +1,25 @@
+{
+	"name": "nodejs-bot",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server/service.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/titanXL/nodejs-bot.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/titanXL/nodejs-bot/issues"
+	},
+	"homepage": "https://github.com/titanXL/nodejs-bot#readme",
+	"dependencies": {
+		"express": "^4.16.2",
+		"moment": "^2.19.1",
+		"superagent": "^3.8.0"
+	}
+}
