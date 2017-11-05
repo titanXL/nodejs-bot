@@ -12,7 +12,8 @@ module.exports.process = function process(intentData, registry, cb) {
 	const location = intentData.location[0].value;
 
 	const service = registry.get('time');
-
+	console.log('reg', registry);
+	console.log('service', service);
 	if (!service) {
 		return cb(false, 'No service available');
 	}

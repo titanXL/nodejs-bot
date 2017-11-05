@@ -1,7 +1,7 @@
 class ServiceRegistry {
 	constructor() {
 		this._services = [];
-		this._timeout = 15;
+		this._timeout = 60;
 	}
 
 	add(intent, ip, port) {

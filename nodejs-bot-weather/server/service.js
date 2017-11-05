@@ -14,7 +14,7 @@ service.get('/service/:location', (req, res, next) => {
 			}
 			res.json({
 				result: `${response.body.weather[0].description} at ${response
-					.body.main.temp} degrees`
+					.body.main.temp - 273.15} degrees`
 			});
 		}
 	);
