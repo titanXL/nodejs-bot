@@ -13,4 +13,4 @@ server.on('listening', () => {
 	);
 });
 
-const webChat = require('../Webchat/server.js')(serviceRegistry);
+const webChat = require('../webchat/server.js')(serviceRegistry);
