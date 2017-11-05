@@ -1,5 +1,5 @@
 {
-	"name": "nodejs-bot-time",
+	"name": "nodejs-bot-weather",
 	"version": "1.0.0",
 	"description": "",
 	"main": "server/service.js",
@@ -19,7 +19,6 @@
 	"homepage": "https://github.com/titanXL/nodejs-bot#readme",
 	"dependencies": {
 		"express": "^4.16.2",
-		"moment": "^2.19.1",
 		"superagent": "^3.8.0"
 	}
 }
