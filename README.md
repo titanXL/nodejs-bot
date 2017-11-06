@@ -1,6 +1,9 @@
 # nodejs-bot
-micro-service architecture <br>
-One service for weather in a current city, using openweathermap API <br>
-One service for time in a current city, using google maps API <br>
-One service providing the chat enviroment <br>
+A rescilent and scalable micro-service based architecture with Node.js<br>
+One service for the weather in a current city, using openweathermap API <br>
+One service for the time in a current city, using google maps API <br>
+One service providing the chat enviroment again built with nodejs and socket.io<br>
+The AI bot is trained for weather and time intents using https://wit.ai/
 For the frontend part => React
+
+install all dependencies in the micro-services and run "node bin/run.js"
