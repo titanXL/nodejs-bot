@@ -74,11 +74,11 @@ module.exports = (serviceRegistry, config) => {
 
             console.log(err)
             console.log(res)
-            return io.emit('messageAdded', 'Something happend...')
+            return io.emit('messageAdded', 'Something happend...') // eslint-disable-line
           }
         })
       }
-      io.emit('messageAdded', newMessage)
+      io.emit('messageAdded', newMessage) // eslint-disable-line
     })
 
     socket.on('userJoined', function (payload) {
