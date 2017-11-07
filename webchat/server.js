@@ -1,6 +1,6 @@
 module.exports = (serviceRegistry, config) => {
   const http = require('http')
-
+  const logger = config.log()
   const service = require('../server/service.js')
   const server = http.createServer(service)
   server.listen(1337)
@@ -22,7 +22,7 @@ module.exports = (serviceRegistry, config) => {
       }
       connections.splice(connections.indexOf(socket), 1)
       socket.disconnect()
-      console.log(
+      logger.info(
         'Disconnected : %s sockets connected',
         connections.length
       )
@@ -39,7 +39,7 @@ module.exports = (serviceRegistry, config) => {
       if (payload.text.toLowerCase().includes('skynet')) {
         witClient.ask(payload.text, (err, res) => {
           if (err) {
-            console.log(err)
+            logger.info(err)
             return
           }
 
@@ -56,10 +56,10 @@ module.exports = (serviceRegistry, config) => {
               res.intent[0].value +
               'Intent')
 
-            intent.process(res, serviceRegistry, function (err, response) {
+            intent.process(res, serviceRegistry, logger, function (err, response) {
               if (err) {
-                console.log(err)
-                console.log(response)
+                logger.info(err)
+                logger.info(response)
                 return
               }
 
@@ -70,10 +70,10 @@ module.exports = (serviceRegistry, config) => {
               })
             })
           } catch (err) {
-            console.log('HERE')
+            logger.info('HERE')
 
-            console.log(err)
-            console.log(res)
+            logger.info(err)
+            logger.info(res)
             return io.emit('messageAdded', 'Something happend...') // eslint-disable-line
           }
         })
@@ -90,11 +90,11 @@ module.exports = (serviceRegistry, config) => {
       users.push(newUser)
 
       io.emit('userJoined', users) // eslint-disable-line
-      console.log('User joined:' + payload.name)
+      logger.info('User joined:' + payload.name)
     })
 
     connections.push(socket)
-    console.log('Connected : %s sockets connected', connections.length)
+    logger.info('Connected : %s sockets connected', connections.length)
   })
-  console.log('server is running on porn 1337')
+  logger.info('server is running on porn 1337')
 }

@@ -5,7 +5,7 @@ const ServiceRegistry = require('./serviceRegistry.js')
 
 
 module.exports = config => {
-  const serviceRegistry = new ServiceRegistry(config.serviceTimeout)
+  const serviceRegistry = new ServiceRegistry(config)
   service.set('serviceRegistry', serviceRegistry)
 
   service.put('/service/:intent/:port', (req, res) => {

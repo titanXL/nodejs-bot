@@ -1,18 +1,20 @@
 const should = require('should')
 
 const ServiceRegistry = require('../../server/serviceRegistry')
+const config = require('../../config')
 
 describe('Service Registry', () => {
   describe('new', () => {
     it('should accept a timeout being passed in', () => {
-      const serviceRegistry = new ServiceRegistry(60)
+
+      const serviceRegistry = new ServiceRegistry(config)
       serviceRegistry._timeout.should.equal(60)
     })
   })
 
   describe('add / get', () => {
     it('should add a new intent to the registry and provide it via get', () => {
-      const serviceRegistry = new ServiceRegistry(60)
+      const serviceRegistry = new ServiceRegistry(config)
       serviceRegistry.add('test', '127.0.0.1', '9999')
       const testIntent = serviceRegistry.get('test')
       testIntent.intent.should.equal('test')
@@ -21,7 +23,7 @@ describe('Service Registry', () => {
     })
 
     it('should update a service', () => {
-      const serviceRegistry = new ServiceRegistry(60)
+      const serviceRegistry = new ServiceRegistry(config)
       serviceRegistry.add('test', '127.0.0.1', '9999')
       const testIntent1 = serviceRegistry.get('test')
       serviceRegistry.add('test', '127.0.0.1', '9999')
@@ -34,7 +36,7 @@ describe('Service Registry', () => {
 
   describe('remove', () => {
     it('Should remove a service from the registry', () => {
-      const serviceRegistry = new ServiceRegistry(60)
+      const serviceRegistry = new ServiceRegistry(config)
       serviceRegistry.add('test', '127.0.0.1', '9999')
       serviceRegistry.remove('test', '127.0.0.1', '9999')
       const testIntent = serviceRegistry.get('test')
@@ -44,7 +46,7 @@ describe('Service Registry', () => {
 
   describe('_cleanup', () => {
     it('Should remove expired services', () => {
-      const serviceRegistry = new ServiceRegistry(-1)
+      const serviceRegistry = new ServiceRegistry({timeout: -1, log: config.log})
       serviceRegistry.add('test', '127.0.0.1', '9999')
       const testIntent = serviceRegistry.get('test')
       should.not.exist(testIntent)

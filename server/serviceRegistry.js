@@ -1,7 +1,8 @@
 class ServiceRegistry {
-  constructor(timeout) {
+  constructor(config) {
     this._services = []
-    this._timeout = timeout
+    this._timeout = config.timeout
+    this._logger = config.log()
   }
 
   add(intent, ip, port) {
@@ -13,13 +14,13 @@ class ServiceRegistry {
       this._services[key].port = port
       this._services[key].intent = intent
 
-      console.log(`Added service for intent: ${intent} on ${ip}:${port}`)
+      this._logger.info(`Added service for intent: ${intent} on ${ip}:${port}`)
       this._cleanUp()
       return
     }
 
     this._services[key].timestamp = Math.floor(new Date() / 1000)
-    console.log(`Updated service for intent: ${intent} on ${ip}:${port}`)
+    this._logger.info(`Updated service for intent: ${intent} on ${ip}:${port}`)
     this._cleanUp()
   }
 
@@ -42,7 +43,7 @@ class ServiceRegistry {
     const timeNow = Math.floor(new Date() / 1000)
     for (let key in this._services) {
       if (this._services[key].timestamp + this._timeout < timeNow) {
-        console.log(
+        this._logger.info(
           `Removed service for intent ${this._services[key].intent}`
         )
         delete this._services[key]
