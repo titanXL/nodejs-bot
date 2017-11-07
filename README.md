@@ -1,5 +1,4 @@
-https://app.codeship.com/projects/cd6a03f0-a5fb-0135-0626-0a4500e5777d/status?branch=master
-
+[ ![Codeship Status for titanXL/nodejs-bot](https://app.codeship.com/projects/cd6a03f0-a5fb-0135-0626-0a4500e5777d/status?branch=master)](https://app.codeship.com/projects/255396)
 # nodejs-bot
 A rescilent and scalable micro-service based architecture with Node.js for a web based chat bot integrated with AI<br>
 One service for the weather in a current city, using openweathermap API <br>
