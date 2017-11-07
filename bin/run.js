@@ -1,5 +1,7 @@
-const service = require('../server/service.js');
 const http = require('http');
+const config = require('../config');
+
+const service = require('../server/service.js')(config);
 const server = http.createServer(service);
 
 const serviceRegistry = service.get('serviceRegistry');
@@ -13,4 +15,4 @@ server.on('listening', () => {
 	);
 });
 
-const webChat = require('../webchat/server.js')(serviceRegistry);
+const webChat = require('../webchat/server.js')(serviceRegistry, config);

@@ -1,5 +1,4 @@
-module.exports = serviceRegistry => {
-	const config = require('../config');
+module.exports = (serviceRegistry, config) => {
 	const http = require('http');
 
 	const service = require('../server/service.js');
