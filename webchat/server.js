@@ -1,11 +1,12 @@
 module.exports = serviceRegistry => {
+	const config = require('../config');
 	const http = require('http');
 
 	const service = require('../server/service.js');
 	const server = http.createServer(service);
 	server.listen(1337);
 
-	const witToken = 'XPNMUVV25NCUXINRL3LIAAS5PGWTVAQG';
+	const witToken = config.witToken;
 	const witClient = require('../server/witClient.js')(witToken);
 
 	var connections = [];

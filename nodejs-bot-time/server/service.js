@@ -3,6 +3,7 @@ const service = express();
 const request = require('superagent');
 const moment = require('moment');
 
+const config = require('../config');
 // geo: AIzaSyBWshmtCC3RlQpPFiN0ydOd3RwW9Z-O3yM
 // https://maps.googleapis.com/maps/api/geocode/json?address=sofia&key=AIzaSyBWshmtCC3RlQpPFiN0ydOd3RwW9Z-O3yM
 // timezone: AIzaSyCxlNMt28e37BpecnaoIAQDF-mei_karGM
@@ -12,7 +13,7 @@ service.get('/service/:location', (req, res, next) => {
 	request.get(
 		'https://maps.googleapis.com/maps/api/geocode/json?address=' +
 			req.params.location +
-			'&key=AIzaSyBWshmtCC3RlQpPFiN0ydOd3RwW9Z-O3yM',
+			'&key=' + config.googleGeoApiKey,
 		(err, response) => {
 			if (err) {
 				console.log(err);
@@ -28,7 +29,7 @@ service.get('/service/:location', (req, res, next) => {
 					location.lng +
 					'&timestamp=' +
 					timestamp +
-					'&key=AIzaSyCxlNMt28e37BpecnaoIAQDF-mei_karGM',
+					'&key=' + config.googleTimeApiKey,
 				(err, response) => {
 					if (err) {
 						console.log(err);
