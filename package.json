@@ -4,7 +4,13 @@
 	"description": "",
 	"main": "server/service.js",
 	"scripts": {
-		"test": "eslint bin server && nyc mocha --recursive test"
+		"test": "eslint bin server && nyc mocha --recursive test",
+		"start:bot": "node bin/run.js",
+		"start:bot-time": "node nodejs-bot-time/bin/run.js",
+		"start:bot-weather": "node nodejs-bot-weather/bin/run.js"
+	},
+	"engines": {
+		"node": "6.9.5"
 	},
 	"repository": {
 		"type": "git",
