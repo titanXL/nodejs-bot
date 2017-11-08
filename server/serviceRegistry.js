@@ -5,14 +5,15 @@ class ServiceRegistry {
     this._logger = config.log()
   }
 
-  add(intent, ip, port) {
-    const key = intent + ip + port
+  add(intent, ip, port, accessToken) {
+    const key = intent + ip + port + accessToken
     if (!this._services[key]) {
       this._services[key] = {}
       this._services[key].timestamp = Math.floor(new Date() / 1000)
       this._services[key].ip = ip
       this._services[key].port = port
       this._services[key].intent = intent
+      this._services[key].accessToken = accessToken
 
       this._logger.info(`Added service for intent: ${intent} on ${ip}:${port}`)
       this._cleanUp()
@@ -24,8 +25,8 @@ class ServiceRegistry {
     this._cleanUp()
   }
 
-  remove(intent, ip, port) {
-    const key = intent + ip + port
+  remove(intent, ip, port, accessToken) {
+    const key = intent + ip + port + accessToken
     delete this._services[key]
   }
 

@@ -19,16 +19,18 @@ module.exports.process = function process(intentData, registry, logger, cb) {
   }
 
   request.get(
-    `http://${service.ip}:${service.port}/service/${location}`,
-    (err, res) => {
-      if (err || res.statusCode !== 200 || !res.body.result) {
-        logger.info(err)
-        return cb(
-          false,
-          `I had a problem finding out the time in ${location}`
-        )
+    `http://${service.ip}:${service.port}/service/${location}`)
+    .set('X-IRIS-SERVICE-TOKEN', service.accessToken)
+    .end(
+      (err, res) => {
+        if (err || res.statusCode !== 200 || !res.body.result) {
+          logger.info(err)
+          return cb(
+            false,
+            `I had a problem finding out the time in ${location}`
+          )
+        }
+        return cb(false, `In ${location} it is now ${res.body.result}`)
       }
-      return cb(false, `In ${location} it is now ${res.body.result}`)
-    }
-  )
+    )
 }

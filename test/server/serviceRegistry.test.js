@@ -15,7 +15,7 @@ describe('Service Registry', () => {
   describe('add / get', () => {
     it('should add a new intent to the registry and provide it via get', () => {
       const serviceRegistry = new ServiceRegistry(config)
-      serviceRegistry.add('test', '127.0.0.1', '9999')
+      serviceRegistry.add('test', '127.0.0.1', '9999', '123')
       const testIntent = serviceRegistry.get('test')
       testIntent.intent.should.equal('test')
       testIntent.ip.should.equal('127.0.0.1')
@@ -24,9 +24,9 @@ describe('Service Registry', () => {
 
     it('should update a service', () => {
       const serviceRegistry = new ServiceRegistry(config)
-      serviceRegistry.add('test', '127.0.0.1', '9999')
+      serviceRegistry.add('test', '127.0.0.1', '9999', '123')
       const testIntent1 = serviceRegistry.get('test')
-      serviceRegistry.add('test', '127.0.0.1', '9999')
+      serviceRegistry.add('test', '127.0.0.1', '9999', '123')
       const testIntent2 = serviceRegistry.get('test')
 
       Object.keys(serviceRegistry._services).length.should.equal(1)
@@ -37,8 +37,8 @@ describe('Service Registry', () => {
   describe('remove', () => {
     it('Should remove a service from the registry', () => {
       const serviceRegistry = new ServiceRegistry(config)
-      serviceRegistry.add('test', '127.0.0.1', '9999')
-      serviceRegistry.remove('test', '127.0.0.1', '9999')
+      serviceRegistry.add('test', '127.0.0.1', '9999', '123')
+      serviceRegistry.remove('test', '127.0.0.1', '9999', '123')
       const testIntent = serviceRegistry.get('test')
       should.not.exist(testIntent)
     })
@@ -47,7 +47,7 @@ describe('Service Registry', () => {
   describe('_cleanup', () => {
     it('Should remove expired services', () => {
       const serviceRegistry = new ServiceRegistry({timeout: -1, log: config.log})
-      serviceRegistry.add('test', '127.0.0.1', '9999')
+      serviceRegistry.add('test', '127.0.0.1', '9999', '123')
       const testIntent = serviceRegistry.get('test')
       should.not.exist(testIntent)
     })
