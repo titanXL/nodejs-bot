@@ -11,6 +11,9 @@ const logger = require('../../config').log()
 // https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YAIzaSyBTVLqIIu_T8HXHDZivjsnUHHY1j2HMXJc
 
 service.get('/service/:location', (req, res) => {
+  if (req.get('X-IRIS-SERVICE-TOKEN') !== config.serviceAccessToken) {
+    return res.sendStatus(403)
+  }
   request.get(
     'https://maps.googleapis.com/maps/api/geocode/json?address=' +
     req.params.location +
