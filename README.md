@@ -7,4 +7,4 @@ One service providing the chat enviroment again built with nodejs and socket.io<
 The AI bot is trained for weather and time intents using https://wit.ai/
 For the frontend part => React
 
-install all dependencies in the micro-services and run "node bin/run.js"
+install all dependencies in the micro-services and run 'node bin/run.js'
