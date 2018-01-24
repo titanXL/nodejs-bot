@@ -1,18 +1,5 @@
 require('dotenv').config()
-
-const bunyan = require('bunyan')
-
-const logger = {
-  development: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-DEV', level: 'debug'})
-  },
-  production: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-PROD', level: 'info'})
-  },
-  test: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-TEST', level: 'fatal'})
-  }
-}
+const logger = require('../utils/logger')
 
 module.exports = {
   witToken: process.env.WIT_TOKEN,

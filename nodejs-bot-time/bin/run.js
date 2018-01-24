@@ -1,3 +1,5 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 const service = require('../server/service.js')
 const http = require('http')
 const request = require('superagent')

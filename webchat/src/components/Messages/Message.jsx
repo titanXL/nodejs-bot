@@ -6,7 +6,7 @@ class Message extends Component {
 		const { message } = this.props;
 		var formattedTime = this.formatTime(message.timeStamp);
 		return (
-			<div className="message">
+			<div className="message list-group-item">
 				<strong>{message.user}</strong> {formattedTime} - {message.text}
 			</div>
 		);

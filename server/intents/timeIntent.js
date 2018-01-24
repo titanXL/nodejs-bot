@@ -1,6 +1,7 @@
 const request = require('superagent')
 
 module.exports.process = function process(intentData, registry, logger, cb) {
+  console.log('REGISTRY', registry)
   if (intentData.intent[0].value !== 'time') {
     return cb(
       new Error(`Expected time intent, got ${intentData.intent[0].value}`)

@@ -1,19 +1,11 @@
 require('dotenv').config()
-const bunyan = require('bunyan')
+const logger = require('../../utils/logger')
 
-const logger = {
-  development: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-WEATHER-DEV', level: 'debug'})
-  },
-  production: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-WEATHER-PROD', level: 'info'})
-  },
-  test: () => {
-    return bunyan.createLogger({name: 'NODEJS-BOT-WEATHER-TEST', level: 'fatal'})
-  }
-}
+const serviceAccessToken = require('crypto').randomBytes(16).toString('hex').slice(0, 32)
 
 module.exports = {
+  irisApiToken: process.env.IRIS_API_TOKEN,
+  serviceAccessToken: serviceAccessToken,
   log: env => {
     if(env)return logger[env]()
 

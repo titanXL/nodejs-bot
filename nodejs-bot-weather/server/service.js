@@ -7,7 +7,7 @@ service.get('/service/:location', (req, res) => {
   request.get(
     'http://api.openweathermap.org/data/2.5/weather?q=' +
     req.params.location +
-    '&APPID=71965510521fcc10776e6f77e12f9df4',
+    '&appid=' + process.env.OPEN_WEATHER_API_KEY,
     (err, response) => {
       if (err) {
         logger.info(err)

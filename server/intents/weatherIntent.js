@@ -18,10 +18,12 @@ module.exports.process = function process(intentData, registry, logger, cb) {
   if (!service) {
     return cb(false, 'No service available')
   }
+  console.log(service)
 
   request.get(
     `http://${service.ip}:${service.port}/service/${location}`,
     (err, res) => {
+      console.log('WEATHER INTENT', res)
       if (err || res.statusCode !== 200 || !res.body.result) {
         logger.info(err)
         return cb(
