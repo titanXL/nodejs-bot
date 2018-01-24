@@ -8,8 +8,7 @@
     "start": "start npm run start:bot && start npm run start:bot-time && start npm run start:bot-weather",
     "start:bot": "node bin/run.js",
     "start:bot-time": "node nodejs-bot-time/bin/run.js",
-    "start:bot-weather": "node nodejs-bot-weather/bin/run.js",
-    "prestart": "cd webchat && npm run build"
+    "start:bot-weather": "node nodejs-bot-weather/bin/run.js"
   },
   "engines": {
     "node": "6.9.5"
